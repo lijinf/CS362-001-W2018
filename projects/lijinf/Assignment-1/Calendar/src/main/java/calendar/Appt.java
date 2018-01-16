@@ -124,7 +124,7 @@ public class Appt implements  Comparable<Appt>{
                 	if(startMonth<1 || startMonth>12)
                 		this.valid=false;
                 	else
-                		this.valid=true;
+                		this.valid=false;
     }
     
 
@@ -296,7 +296,7 @@ public class Appt implements  Comparable<Appt>{
 		if (!getValid()) {
 		    return null;
 		}
-         String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
+         String day= "/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
         return "\t"+ day +  this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription()+"\n";
     }
 

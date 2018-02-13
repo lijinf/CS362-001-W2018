@@ -11,6 +11,7 @@ public class ApptTest {
      * Test that the gets methods work as expected.
      */
 	 @Test
+	 // Appt()
 	  public void test01()  throws Throwable  {
 		 int startHour=21;
 		 int startMinute=30;
@@ -36,9 +37,13 @@ public class ApptTest {
 		 assertEquals(2018, appt.getStartYear());
 		 assertEquals("Birthday Party", appt.getTitle());
 		 assertEquals("This is my birthday party.", appt.getDescription());         		
+		 assertEquals(2,appt.getRecurBy());
+		 assertEquals(0,appt.getRecurIncrement());
+		 assertEquals(0,appt.getRecurNumber());
 	 }
 
 	 @Test
+	 // isValid()
 	  public void test02()  throws Throwable  {
 	 	 int startHour=21;
 		 int startMinute=30;
@@ -54,36 +59,43 @@ public class ApptTest {
 				 startYear ,
 				 title,
 				 description);
+
 		 appt.setStartHour(-1);
 		 assertFalse(appt.getValid());
 		 appt.setStartHour(24);
 		 assertFalse(appt.getValid());
-		 appt.setStartHour(21);
+		 appt.setStartHour(0);
+		 assertTrue(appt.getValid());
+		 appt.setStartHour(23);
 		 assertTrue(appt.getValid());
 
 		 appt.setStartMinute(-1);
 		 assertFalse(appt.getValid());
-		 appt.setStartMinute(80);
+		 appt.setStartMinute(60);
 		 assertFalse(appt.getValid());
-		 appt.setStartMinute(30);
+		 appt.setStartMinute(0);
+		 assertTrue(appt.getValid());
+		 appt.setStartMinute(59);
 		 assertTrue(appt.getValid());
 
 		 appt.setStartDay(0);
 		 assertFalse(appt.getValid());
-		 appt.setStartDay(50);
+		 appt.setStartDay(32);
 		 assertFalse(appt.getValid());
-		 appt.setStartDay(15);
+		 appt.setStartDay(1);
 		 assertTrue(appt.getValid());
-
-		 appt.setStartYear(0);
-		 assertTrue(appt.getStartYear() == 0);
-		 appt.setStartYear(2018);
-		 assertTrue(appt.getStartYear() == 2018);
+		 appt.setStartDay(31);
+		 assertTrue(appt.getValid());
 
 		 appt.setStartMonth(12);
 		 assertTrue(appt.getStartMonth() == 12);
 		 appt.setStartMonth(01);
 		 assertTrue(appt.getStartMonth() == 01);
+
+		 appt.setStartYear(0);
+		 assertTrue(appt.getStartYear() == 0);
+		 appt.setStartYear(2018);
+		 assertTrue(appt.getStartYear() == 2018);
 
 		 appt.setTitle(null);
 		 assertEquals("",appt.getTitle());
@@ -96,6 +108,7 @@ public class ApptTest {
 
 	 }
 	 @Test
+	 // toSorting()
 	  public void test03()  throws Throwable {
 	 	 int startHour=21;
 		 int startMinute=30;
@@ -149,6 +162,7 @@ public class ApptTest {
 		assertFalse(appt.isRecurring());
 	}
 	@Test
+	// compareTo()
 	public void test05()  throws Throwable {
 		int startHour=21;
 		int startMinute=30;

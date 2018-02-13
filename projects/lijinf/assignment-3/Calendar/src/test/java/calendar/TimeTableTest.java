@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 public class TimeTableTest {
 
 	 @Test
+	 // getApptRange()
 	  public void test01()  throws Throwable  {
 		 TimeTable timeTable=new TimeTable();
 		 GregorianCalendar first = new GregorianCalendar();
@@ -36,29 +37,19 @@ public class TimeTableTest {
 				 "");
 		 appt.setRecurrence(recurringDays, 1, 0, 1);
 		 appts.add(appt);
-		 appt = new Appt(startHour,
-				 startMinute ,
-				 startDay + 1,
-				 startMonth + 1,
-				 startYear ,
-				 "",
-				 "");
-
+		 appt.setStartDay(startDay+1);
+		 appt.setStartMonth(startMonth+1);
 		 appt.setRecurrence(recurringDays, 1, 0, 1);
 		 appts.add(appt);
-		 appt = new Appt(-1,
-				 startMinute ,
-				 startDay + 1,
-				 startMonth + 1,
-				 startYear ,
-				 "",
-				 "");
+		 appt.setStartHour(startHour-1);
 		 appts.add(appt);
-		 timeTable.getApptRange(appts,first,last);
+		 assertTrue(timeTable.getApptRange(appts,first,last).size() != 0);
+		 assertEquals(286,timeTable.getApptRange(appts,first,last).size());
 		 //timeTable.getApptRange(appts,last,first);
 
 	 }
 	 @Test
+	 // deleteAppt()
 	  public void test02()  throws Throwable  {
 		 TimeTable timeTable=new TimeTable();
 		 LinkedList<Appt> appts = new LinkedList<Appt>();
@@ -94,9 +85,10 @@ public class TimeTableTest {
 		 appt.setStartHour(21);
 		 appts.add(appt);
 		 appts.add(appt);
-		 assertNull(timeTable.deleteAppt(appts, appt));
+		 assertTrue(timeTable.deleteAppt(appts, appt) != null);
 	 }
 	 @Test
+	 // permute()
 		public void test03()  throws Throwable  {
 		 TimeTable timeTable=new TimeTable();
 		 int startHour=21;
@@ -115,7 +107,7 @@ public class TimeTableTest {
 		 appts.add(appt);
 		 appts.add(appt);
 		 int[] pv = new int[1];
-		 timeTable.permute(appts,pv);
+		 //timeTable.permute(appts,pv);
 		 pv = new int[2];
 		 timeTable.permute(appts,pv);
 		}

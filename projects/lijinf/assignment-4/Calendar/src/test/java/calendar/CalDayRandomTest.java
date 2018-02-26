@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
  */
 
 public class CalDayRandomTest {
-	//private static final long TestTimeout = 60 * 500 * 1; /* Timeout at 30 seconds */
-	private static final long TestTimeout = 5000;
+	private static final long TestTimeout = 60 * 500 * 1; /* Timeout at 30 seconds */
+	//private static final long TestTimeout = 5000;
 	private static final int NUM_TESTS=10;
     /**
      * Generate Random Tests that tests CalDay Class.

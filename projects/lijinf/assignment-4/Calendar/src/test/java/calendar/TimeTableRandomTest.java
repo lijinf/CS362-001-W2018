@@ -17,8 +17,8 @@ import static org.junit.Assert.*;
  */
 
 public class TimeTableRandomTest {
-	//private static final long TestTimeout = 60 * 500 * 1; /* Timeout at 30 seconds */
-	private static final long TestTimeout = 10000;
+	private static final long TestTimeout = 60 * 500 * 1; /* Timeout at 30 seconds */
+	//private static final long TestTimeout = 10000;
 	private static final int NUM_TESTS=10;
 
 		public static int randomYear(Random r){
@@ -88,6 +88,7 @@ public class TimeTableRandomTest {
 					 appts_d.add(appt);
 					 coin = ValuesGenerator.getRandomIntBetween(random, 0, 4);
 					 if(coin == 0){
+						 appt.setStartHour(-1);
 						 timeTable.deleteAppt(appts_d, appt);
 					 }
 				 }
@@ -124,7 +125,7 @@ public class TimeTableRandomTest {
 				 GregorianCalendar last = new GregorianCalendar(3000,12,31);
 
 				 timeTable.getApptRange(appts, first, last);
-				 //timeTable.getApptRange(appts, last, first);
+				 timeTable.getApptRange(appts, last, first);
 
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 				 //if((iteration%10000)==0 && iteration!=0 )

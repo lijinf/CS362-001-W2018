@@ -1,0 +1,14 @@
+Bug-reports:
+
+Appt Line 115 and 118 "if (startHour<-1 || startHour>23)" and "if (startMinute<0 && startMinute>59)". 
+These two bugs will cause boundary problem of isValid function. These two bugs were found by test02 with assertion message.
+
+Appt Line 300 "return "\t"+ day + this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription()+"\n"". 
+This bug was found by test03 with "java.lang.AssertionError: expected null, but was:<	1/15/2018 at -1:30am ,Birthday Party, This is my birthday party." 
+This is an interesting bug. I thought this bug will not be found by test case because it is a string printing error. But it was asserted.
+
+CalDay Line 85 "getAppts().add(appt)" deleted. This bug cause missing add function call which will not add appointment into calendar. 
+This bug was found by test02 with "java.lang.IndexOutOfBoundsException: Index: 0, Size: 0".
+
+TimeTable Line 53 "for (int i = 0; i < appts.size(); i--) ". 
+This bug will cause out of array boundary with memory error. i-- was a bug found by error message "java.lang.IndexOutOfBoundsException: Index: -1, Size: 10".
